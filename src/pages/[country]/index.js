@@ -1,5 +1,4 @@
 import { useRouter } from "next/router"
-import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
@@ -27,9 +26,7 @@ export default function Country({country}){
 
   return (
     <>
-      <Head>
-        <Script src="https://kit.fontawesome.com/0d4a85bfb9.js" crossOrigin="anonymous" />
-      </Head>
+      <Script src="https://kit.fontawesome.com/0d4a85bfb9.js" crossOrigin="anonymous" />
       <Header />
       <main className="bg-gray-100 dark:bg-slate-800 min-h-[calc(100vh_-_5rem)]">
         <div id="country-container" className="p-12 dark:text-gray-300 flex flex-col">
