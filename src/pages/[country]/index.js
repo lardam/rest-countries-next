@@ -24,13 +24,12 @@ export default function Country({country}){
   return (
     <>
       <Script src="https://kit.fontawesome.com/0d4a85bfb9.js" crossOrigin="anonymous" />
-      <Header />
       <main className="bg-gray-100 dark:bg-slate-800 min-h-[calc(100vh_-_5rem)]">
-        <div id="country-container" className="p-12 dark:text-gray-300 flex flex-col">
-          <div id="curr-flag-container" className="w-full max-w-[450px] self-center mb-4 aspect-[5/3] relative">
+        <div id="country-container" className="min-h-[800px] p-12 dark:text-gray-300 flex flex-col lg:flex-row lg:justify-evenly">
+          <div id="curr-flag-container" className="w-full max-w-[450px] self-center mb-4 aspect-[5/3] relative lg:order-2">
             <Image src={getCurrentCountry.flags.png} className="absolute rounded" fill priority alt={`${getCurrentCountry.name.common} flag`} />
           </div>
-          <div id="info-curr-country" className="h-96 flex flex-col justify-between">
+          <div id="info-curr-country" className="h-96 flex flex-col justify-between lg:order-1 lg:self-center">
             <h1 id="curr-name" className="text-3xl font-bold">{getCurrentCountry.name.common}</h1>
             <div id="curr-region" className="w-fit ml-[-.5rem] px-2 py-1 border bg-indigo-200 flex rounded overflow-scroll md:overflow-visible dark:text-black"><p className="font-semibold mr-1">{getCurrentCountry.region}</p><p> / {getCurrentCountry.subregion || "-"}</p></div>
             <p id="curr-capital"><b>Capital: </b>{getCurrentCountry.capital || "No capital"}</p>
