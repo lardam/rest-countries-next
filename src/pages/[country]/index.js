@@ -21,9 +21,6 @@ export default function Country({country}){
   const getLanguages =  getCurrentCountry.languages && Object.entries(getCurrentCountry.languages);
   const getCurrencies = getCurrentCountry.currencies && Object.entries(getCurrentCountry.currencies).map(pair => [pair[0], pair[1].name]) || [["no-curr", "No official currency"]];
 
-
-  console.log(getCurrentCountry)
-
   return (
     <>
       <Script src="https://kit.fontawesome.com/0d4a85bfb9.js" crossOrigin="anonymous" />
@@ -35,7 +32,7 @@ export default function Country({country}){
           </div>
           <div id="info-curr-country" className="h-96 flex flex-col justify-between">
             <h1 id="curr-name" className="text-3xl font-bold">{getCurrentCountry.name.common}</h1>
-            <div id="curr-region" className="w-fit ml-[-.5rem] px-2 py-1 border bg-indigo-200 flex rounded overflow-scroll md:overflow-visible dark:text-black"><p className="font-semibold mr-1">{getCurrentCountry.region}</p><p> / {getCurrentCountry.subregion}</p></div>
+            <div id="curr-region" className="w-fit ml-[-.5rem] px-2 py-1 border bg-indigo-200 flex rounded overflow-scroll md:overflow-visible dark:text-black"><p className="font-semibold mr-1">{getCurrentCountry.region}</p><p> / {getCurrentCountry.subregion || "-"}</p></div>
             <p id="curr-capital"><b>Capital: </b>{getCurrentCountry.capital || "No capital"}</p>
             <p id="curr-population"><b>Population: </b>{getCurrentCountry.population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
             <div id="lang-list-container" className="flex items-center">
@@ -49,10 +46,10 @@ export default function Country({country}){
             <div id="border-list-container" className="flex items-center">
               <p className="mr-2"><b>Borders with:</b></p>
               <ul id="border-list" className="flex gap-2 overflow-scroll md:overflow-visible touch-pan-x">
-                {getCurrentCountry.borders.map((brd, index) => (
+                {getCurrentCountry.borders && getCurrentCountry.borders.length > 0 ? getCurrentCountry.borders.map((brd, index) => (
                   //Posible link con cioc
                     <li key={index} className="px-2 py-1 border bg-indigo-200 rounded dark:text-black">{brd}</li>
-                )) || <li key={no-bord}>No borders</li>}
+                )) : <li>No borders</li>}
               </ul>
             </div>
             <div id="currency-list-container" className="flex items-center">

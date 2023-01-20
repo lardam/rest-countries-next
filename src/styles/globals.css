@@ -8,6 +8,10 @@
     scroll-behavior: smooth;
 }
 
+.fa-solid{
+    line-height: 2rem;
+}
+
 @keyframes moon-bounce {
     0%{
         transform: translateY(0);
